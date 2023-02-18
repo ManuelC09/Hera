@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Login Admin {% endblock %}
+
+{% block content %}
+<main class="registro">
+    <div class="login-title">
+        <h1>Inicia sesión como administrador</h1>
+    </div>
+
+    <div class="form">
+        <form action="/admin" method="POST">
+        <div class="form-input">
+            <div class="form-input-login">
+            <div class="form-content">
+                <label for="usuario">Usuario</label>
+                <input type="text" name="usuario">
+            </div>
+            <div class="form-content">
+                <label for="contraseña">Contraseña</label>
+                <input type="password" name="contraseña">
+            </div>
+        </div>
+    </div>
+        <div class="enviar">
+            <button class="btn-submit"><input type="submit" value="Iniciar sesión"></button>
+        </div>
+    
+    </form>
+    </div>
+</main>
+
+{% endblock %}

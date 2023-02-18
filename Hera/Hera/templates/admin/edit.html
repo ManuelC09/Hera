@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Users Edit {% endblock %}
+
+{% block content %}
+<main class="registro">
+    <div class="registro-title">
+        <h1>Editar usuario</h1>
+    </div>
+
+    <div class="form">
+        <form action="{{ url_for('admin.update', id = user.id )}}" method="post">
+        <div class="form-input">
+            <div class="form-content">
+                <label for="nombre">Nombre Completo</label>
+                <input type="nombre" name="nombre" value="{{ user.nombre }}">
+            </div>
+            <div class="form-content">
+                <label for="edad">Edad</label>
+                <input type="numer" min="1" name="edad" value="{{ user.edad }}">
+            </div>
+            <div class="form-content">
+                <label for="usuario">Usuario</label>
+                <input type="text" name="usuario" value="{{ user.usuario }}">
+            </div>
+            <div class="form-content">
+                <label for="correo">Correo</label>
+                <input type="email" name="email" value="{{ user.correo }}">
+            </div>
+        </div>
+        <div class="enviar">
+            <button class="btn-submit"><input type="submit" value="Confirmar"></button>
+        </div>
+    </form>
+    </div>
+</main>
+
+{% endblock %}

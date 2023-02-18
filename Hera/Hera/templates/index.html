@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %} Inicio {% endblock %}
+
+{% block content %}
+<main>
+    <div class="head">
+        <div class="head-title">
+            <h1>¿Qué es Hera?</h1>
+            <div class="head-description">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Alias, deserunt dicta! Nam quis quo maxime
+                    veniam laborum voluptatum sint maiores? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Libero officiis obcaecati repudiandae tempore eos facilis quam, doloremque eaque optio
+                    laudantium perferendis modi. Alias excepturi voluptates hic amet dolorum, nam facere!</p>
+            </div>
+        </div>
+
+    </div>
+    {% if user != None %}
+    <div class="user">
+        <h1>Bienvenido {{nombre}}, estos han sido tus ultimos datos</h1>
+        <hr>
+        <div class="user-container">
+            {% for user in user %}
+            <div class="datos">
+                <img src="{{ url_for('static', filename='images/monitor1.svg') }}" alt="">
+                <div class="datos-user">
+                    <span><strong>Datos</strong></span>
+                    <hr>
+                    <span><strong>BPM:</strong> {{ user.bpm }}</span>
+                    <br>
+                    <span><strong>Fecha:</strong> <small> {{ user.fecha }}</small></span>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    {% endif %}
+    <!--  -->
+    <section class="skills">
+        <h1>Porqué Hera</h1>
+        <div class="skills-hera">
+            <div class="skill">
+                <img src="{{ url_for('static', filename='images/rapido.svg') }}" alt="">
+                <h2>Rápido</h2>
+            </div>
+            <div class="skill">
+                <img src="{{ url_for('static', filename='images/2536775_home_house_lock_security_icon.svg') }}" alt="">
+                <h2>Seguro</h2>
+            </div>
+            <div class="skill">
+                <img src="{{ url_for('static', filename='images/portable.svg') }}" alt="">
+                <h2>Portable</h2>
+            </div>
+            <div class="skill">
+                <img src="{{ url_for('static', filename='images/arduino.svg') }}" alt="">
+                <h2>Automatico</h2>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}

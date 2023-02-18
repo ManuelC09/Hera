@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Admin Site {% endblock %}
+
+{% block content %}
+
+{% if session.id_admin %}
+
+<main class="registro">
+    <div class="registro-title">
+        <h1>Administrador</h1>
+    </div>
+    
+    <div class="admin">
+        <div class="admin-site bg-verde">
+            <a target="_blank" href="{{ url_for('admin.users_all') }}"><img src="{{ url_for('static', filename='images/309041_users_group_people_icon.svg') }}" alt=""></a>
+            
+            <h1>Usuarios</h1>
+        </div>
+        <div class="admin-site bg-azul">
+            <a target="_blank" href="{{ url_for('admin.users_data') }}"><img src="{{ url_for('static', filename='images/115746_data_icon.svg') }}" alt=""></a>
+            <h1>Datos</h1>
+        </div>
+        
+    </div>
+
+</main>
+
+{% else %}
+<div class="registro-title">
+    <h1>Administrador</h1>
+
+    <button class="btn-admin"><a href="{{ url_for('admin.admin_login') }}">Ingresa Aquí</a></button>
+
+</div>
+{% endif %}
+
+{% endblock %}

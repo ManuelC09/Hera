@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Users Data {% endblock %}
+
+{% block content %}
+<main>
+    <div class="table-title">
+        <h1>Datos de {{ user.nombre }}</h1>
+    </div>
+    <div class="table-container pad_155">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ user.nombre }}</td>
+                    <td>{{ user.edad }}</td>
+                    <td>{{ user.usuario }}</td>
+                    <td>{{ user.correo }}</td>
+                    <td> <a class="table-link" href="{{ url_for('admin.edit', id = user.id) }}">
+                            <i class=" verde fas fa-pen-square"></i></a>
+                        <a class="table-link delete" href="{{ url_for('admin.delete', id = user.id) }}">
+                            <i class=" rojo fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+{% endblock %}

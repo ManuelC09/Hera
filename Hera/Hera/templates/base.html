@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hera - {% block title %}{% endblock %}</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico' ) }}" type="image/x-icon">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Iconos Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+</head>
+
+<body>
+
+    <header>
+        <!-- Navegación -->
+        {% if session.id_usuario %}
+        <nav>
+
+            <div class="logo">
+                <a href="{{ url_for('base.index') }}"><img
+                        src="{{ url_for('static', filename='images/Hera2.svg') }}"></a>
+            </div>
+
+            <div class="opciones">
+                <ul>
+                    <li><a href="{{ url_for('medicion.medicion_base' )}}">Medición</a></li>
+                    <li><a href="{{ url_for('medicion.user_historial') }}">Historial</a></li>
+                    <li><a href="{{ url_for('medicion.tutorial') }}">Tutorial</a></li>
+                </ul>
+            </div>
+
+
+            <div class="acciones">
+                <ul>
+                    <li><a href="{{ url_for('users.logout') }}">Logout</a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+        {% elif session.id_admin %}
+        <nav>
+            <div class="logo">
+                <a href="{{ url_for('admin.home_admin') }}"><img
+                        src="{{ url_for('static', filename='images/Hera2.svg') }}"></a>
+            </div>
+
+            <div class="acciones">
+                <ul>
+                    <li><a href="{{ url_for('admin.admin_logout') }}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        {% else %}
+        <nav>
+            <div class="logo">
+                <a href="{{ url_for('base.index') }}">
+                    <img src="{{ url_for('static', filename='images/Hera2.svg') }}"></a>
+            </div>
+
+            <div class="opciones">
+                <ul>
+                    <li><a href="{{ url_for('medicion.medicion_base' )}}">Medición</a></li>
+                    <li><a href="{{ url_for('medicion.user_historial') }}">Historial</a></li>
+                    <li><a href="{{ url_for('medicion.tutorial') }}">Tutorial</a></li>
+                </ul>
+            </div>
+
+
+            <div class="acciones">
+                <ul>
+                    <li><a href="{{ url_for('users.register') }}">Registro</a></li>
+                    <li><a href="{{ url_for('users.login') }}">Login</a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+
+        {% endif %}
+
+
+
+
+        <!-- ends navegación -->
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="mapa">
+            <p class="white"><strong>Mapa del sitio</strong></p>
+            <ul class="white">
+                <li class="small">Inicio</li>
+                <li class="small">Medicíon</li>
+                <li class="small">Historial</li>
+                <li class="small">Tutorial</li>
+            </ul>
+        </div>
+
+        <!-- Contacto -->
+
+        <div class="contacto">
+            <p class="white"><strong>Contacto</strong></p>
+            <ul class="white">
+                <li class="small"><i class="fas fa-phone"></i> +505 1234 5678</li>
+                <li class="small"><i class="fas fa-envelope"></i> ejemplo@ejemplo.com</li>
+                <li class="small"><i class="fas fa-user"></i> Manuel Manuel - <i>Médico</i></li>
+                <li class="small"><i class="fas fa-map-marker-alt"></i> Jinotepe, Carazo, Nicaragua</li>
+            </ul>
+        </div>
+        <div>
+            <p class="white"><strong>Redes Sociales</strong></p>
+            <ul class="social-networks">
+                <li><i class="fab fa-facebook"></i></li>
+                <li><i class="fab fa-twitter"></i></li>
+                <li><i class="fab fa-instagram"></i></li>
+                <li><i class="fab fa-youtube"></i></li>
+            </ul>
+        </div>
+
+    </footer>
+    <!-- endfooter -->
+
+    <!-- Alertas Sweetalert2 -->
+    {% if success %}
+    <script>
+        Swal.fire({
+            "title": "{{success}}",
+            "icon": "success"
+        })
+    </script>
+    {% endif %}
+    {% if alert %}
+    <script>
+        Swal.fire({
+            "title": "{{alert}}",
+            "icon": "error"
+        })
+    </script>
+    {% endif %}
+
+    <!-- Scrips -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+</body>
+
+</html>

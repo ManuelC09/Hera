@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Users All {% endblock %}
+
+{% block content %}
+<main>
+    <div class="table-title">
+        <h1>Usuarios registrados</h1>
+    </div>
+    <form action="" method="POST">
+    <div class="search">
+        <input type="search" name="nombre" placeholder="Nombre completo">
+        <div class="search-logo">
+            <i class="fa fa-search"></i>
+        </div>
+    </div>
+</form>
+    <div class="download">
+        <h3>
+        <a href="{{ url_for('admin.download_file', format = 'usersall') }}"><i class="excel fas fa-file-excel"></i> Descargar Datos</a></h3>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.nombre }}</td>
+                    <td>{{ user.edad }}</td>
+                    <td>{{ user.usuario }}</td>
+                    <td>{{ user.correo }}</td>
+                    <td> <a class="table-link" href="{{ url_for('admin.edit', id = user.id) }}">
+                            <i class=" verde fas fa-pen-square"></i></a>
+                        <a class="table-link delete" href="{{ url_for('admin.delete', id = user.id) }}">
+                            <i class=" rojo fas fa-trash"></i></a></td>
+                </tr>
+
+                {% endfor %}
+
+                
+            </tbody>
+        </table>
+    </div>
+</main>
+
+{% endblock %}

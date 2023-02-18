@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} Medición {% endblock %}
+
+{% block content %}
+<main class="principal">
+        <div class="titulo">
+            <h1>SU MEDICIÓN ES:</h1>
+        </div>
+        <section>
+            <div class="contenido_medicion">
+                <div class="BPM">
+                    <div>
+                        <h3>{{ bpm }}</h3>
+                        <p>BPM</p>
+                    </div>
+                </div>
+                <div class="imagen_medicion">
+                    <img src="{{ url_for('static', filename='images/dark_heart.svg') }}">
+                </div>
+            </div>
+        </section>
+        <div class="contenido_medicion">
+            <div class="volver">
+                <h4><a href="{{ url_for('medicion.user_medicion') }}">Pulse aquí para obtener una nueva medición</a>
+                </h4>
+            </div>
+        </div>
+</main>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Medición {% endblock %}
+
+
+{% block content %}
+<main>
+    <form action="/medicion" method="POST">
+        <div class="info">
+            <h3 class="titulo1">Para obtener su medición pulse el siguiente boton:</h3>
+            <div class="btn-medicion">
+                <button class="btn" onclick="tiempo()" id="submit" type="submit">Iniciar medición</button>
+            </div>
+            <div>
+                <h6 id="tiempo"></h6>
+            </div>
+        </div>
+        <div class="info">
+            <br>
+            <p> <b>NOTA:<br> Una vez presione el boton asegurese de tener su dedo sobre el sensor</p></b>
+            <br>
+            <p>¿Sabías qué?</p>
+            <ul>
+                <li>BPM por sus siglas en ingles significa "Beats For Minutes" que en español se traduce como "Latidos
+                    por
+                    minuto".</li>
+                <li>El latido de una persona sana en reposo ronda entre los 60 a 100 bpms</li>
+                <li>Un latido mayor a 100 bpm es sintoma de una enfermedad cardiaca</li>
+            </ul>
+        </div>
+    </form>
+</main>
+{% endblock %}

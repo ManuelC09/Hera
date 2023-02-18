@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Registro {% endblock %}
+
+{% block content %}
+
+<main class="registro">
+    <div class="registro-title">
+        <h1>Regístrate</h1>
+    </div>
+
+    <div class="form">
+        <form action="/register" method="POST">
+        <div class="form-input">
+            <div class="form-content">
+                <label for="nombre">Nombre Completo</label>
+                <input type="nombre" name="nombre">
+            </div>
+            <div class="form-content">
+                <label for="edad">Edad</label>
+                <input type="numer" min="1" name="edad">
+            </div>
+            <div class="form-content">
+                <label for="usuario">Usuario</label>
+                <input type="text" name="usuario">
+            </div>
+            <div class="form-content">
+                <label for="correo">Correo</label>
+                <input type="email" name="email">
+            </div>
+            <div class="form-content">
+                <label for="clave">Contraseña</label>
+                <input type="password" name="clave">
+            </div>
+            <div class="form-content">
+                <label for="confirmacion'">Confirmación</label>
+                <input type="password" name="confirmacion">
+            </div>
+        </div>
+        <div class="enviar">
+            <button class="btn-submit"><input type="submit" value="Registrarse"></button>
+        </div>
+    </form>
+    </div>
+</main>
+
+
+{% endblock %}

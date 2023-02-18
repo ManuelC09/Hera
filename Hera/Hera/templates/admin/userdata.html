@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Users Data {% endblock %}
+
+{% block content %}
+<main>
+    <div class="table-title">
+        <h1>Datos de {{ name }}</h1>
+    </div>
+    <div class="download">
+        <h3>
+        <a href="{{ url_for('admin.download_datauser', name = name) }}"><i class="excel fas fa-file-excel"></i> Descargar Datos</a></h3>
+    </div>
+    <div class="table-container pad_170">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>BPM</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in user %}
+                <tr>
+                    <td>{{ user.User.nombre }}</td>
+                    <td>{{ user.User.edad }}</td>
+                    <td>{{ user.UserDato.bpm }}</td>
+                    <td>{{ user.UserDato.fecha }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+{% endblock %}
